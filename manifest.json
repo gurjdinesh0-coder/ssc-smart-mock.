@@ -1,0 +1,1 @@
+{"name":"SSC Smart Mock","short_name":"SSC Mock","description":"Offline-first SSC mock tests","start_url":"./index.html","scope":"./","display":"standalone","background_color":"#f2f5f9","theme_color":"#102b4e","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
