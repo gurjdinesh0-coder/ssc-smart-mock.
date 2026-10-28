@@ -1,1 +1,15 @@
-{"name":"SSC Smart Mock","short_name":"SSC Mock","description":"Offline-first SSC mock tests","start_url":"./index.html","scope":"./","display":"standalone","background_color":"#f2f5f9","theme_color":"#102b4e","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
+{
+  "id": "./",
+  "name": "SSC Smart Mock",
+  "short_name": "SSC Mock",
+  "description": "Offline-first SSC exam mock tests with photo text extraction, custom timers and answer review.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f2f5f9",
+  "theme_color": "#102b4e",
+  "icons": [
+    {"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}

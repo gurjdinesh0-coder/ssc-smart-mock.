@@ -1,27 +1,25 @@
-# SSC Smart Mock — first prototype
+# SSC Smart Mock — prototype v2.1 (OCR-enabled)
 
-An offline-first, mobile-friendly Progressive Web App (PWA) prototype for SSC practice.
+A mobile-friendly, offline-first SSC mock test PWA prototype. Features include:
+- SSC CHSL, CGL, MTS, GD, CPO and custom practice labels
+- Subject-wise and mixed sample tests
+- Custom test timers, question palette, mark-for-review and auto-submit
+- Local saving of tests and attempts in the browser
+- Photo upload and on-device OCR using Tesseract.js, with editable extracted text; English/Hindi language selection
 
-## Included
-- SSC CHSL, CGL, MTS, GD, CPO and custom practice selectors
-- Four SSC-style subject areas and sample MCQs
-- Custom sectional timer, question palette, mark-for-review, auto-submit
-- Results and answer explanations
-- Local saved tests and history
-- Manual question editor and bulk text parser
-- Photo attachment preview for reference
-- PWA manifest and service worker for install/offline caching
+## Important limits
+- Photo OCR is not a full AI question understanding system. It reads text and makes a best-effort conversion of clearly labelled A/B/C/D choices. Always review question text, choices, answer keys and explanations before saving.
+- Tesseract.js and its language data are loaded from a CDN on first OCR use, so the first OCR run requires internet. Core mock tests and saved data work offline after the app is loaded. OCR may need internet again if the browser clears its cache.
+- No AI answer-generation service or official answer-key verification is connected in this prototype. Questions without a known answer are left unscored until you provide the correct answer.
+- Browser local storage is local to that browser profile. Clearing site data can delete saved tests and history; export/backup is not included yet.
+- This is a PWA project, not a compiled APK. The Android APK must be packaged and tested separately.
 
-## Important limitations in this prototype
-- Photo OCR / AI conversion is not implemented yet. The attached image is a reference; type or paste the extracted questions in the editor.
-- The sample questions are demonstrations, not an official or comprehensive SSC question bank.
-- Negative marking, exam-specific official patterns and configurable marks per question are not implemented yet.
-- Data is stored in this browser's local storage. Clearing browser data removes it.
-- A signed native APK is not included. This is a PWA that can be installed from a secure-hosted URL in Android Chrome. To make an APK, package the app with a native Android wrapper (e.g. Trusted Web Activity or WebView) and build/sign it with Android tooling.
+## Android-only setup route
+1. Download and extract the ZIP on your Android phone using a file manager such as Files or ZArchiver.
+2. Publish the contents of this folder to an HTTPS static host. One route is to create a GitHub repository in your mobile browser, upload `index.html`, `manifest.json`, `sw.js`, and `icon.svg`, then enable GitHub Pages in repository Settings → Pages. Wait for the HTTPS site URL.
+3. Open the HTTPS site in Chrome on Android, use the browser menu → **Add to Home screen** / **Install app**, then open it from the home screen. This installs the PWA, not yet a standalone APK.
+4. To create an APK, open PWABuilder (https://www.pwabuilder.com/) in the mobile browser and enter the published HTTPS URL. Follow its Android package instructions. If its workflow requires a downloadable signing/build artifact or desktop tooling, use a trusted Android cloud build service or a computer for that final step; do not install unknown APKs from unofficial sources.
+5. Test offline mode, photo selection, OCR after first load, timers, saved tests, and results before relying on it for exam practice.
 
-## Run locally
-Serve this folder over localhost or HTTPS (service workers do not run from file://). For example, with Python installed:
-
-    python -m http.server 8000
-
-Then open http://localhost:8000 in a browser. For Android installation, deploy to an HTTPS host, open the URL in Chrome, then use the browser menu's Install app / Add to Home screen option.
+## OCR format that converts best
+For best automatic structuring, photos should clearly show questions and choices labelled `A)`, `B)`, `C)`, `D)`. If an answer key is visible, it should say something like `Answer: B`. OCR output is placed into the editable question text area; verify before saving.
